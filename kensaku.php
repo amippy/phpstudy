@@ -16,7 +16,6 @@ $dbh = new PDO($dsn,$user,$password);
 
 $dbh->query('SET NAMES UTF-8');
 $sql = 'SELECT * FROM anketo WHERE code ='.$code;
-
 $stmt =$dbh->prepare($sql);
 $data[]=$code;
 $stmt->execute($data);
