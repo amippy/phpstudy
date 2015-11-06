@@ -33,19 +33,12 @@ while(1)
 	print '<br />';
 	}
 
-
-
-
-
-
-
-
-
-
-
-
 $dbh = null;
 ?>
 
+
+<br />
+<a href ="menu.html">メニューに戻る</a>
+ 
 </body>
 </html>
