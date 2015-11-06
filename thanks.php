@@ -7,6 +7,9 @@
 <body>
 
 <?php
+try
+{
+$dsn = 'mysql:dbname=phpkiso;host=localhost';
 $nickname=$_POST['nickname'];
 $email=$_POST['email'];
 $goiken=$_POST['goiken'];
@@ -23,6 +26,13 @@ print $goiken;
 print '』<br />';
 print $email;
 print 'にメールを送りましたのでご確認ください。';
+
+$dbh =null;
+}
+catch (Exception $e)
+{
+	print 'ただいま障害により大変ご迷惑をおかけしております。';
+}
 ?>
 
 
