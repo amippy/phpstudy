@@ -7,12 +7,15 @@
 <body>
 
 <?php
+$code=$_POST['code'];
+
 $dsn = 'mysql:dbname=phpkiso;host=localhost';
 $user = 'root';
 $password = '';
 $dbh = new PDO($dsn,$user,$password);
 
 $dbh->query('SET NAMES UTF-8');
+$sql = 'SELECT * FROM anketo WHERE code ='.$code;
 
 $sql = 'SELECT	* FROM anketo WHERE 1';
 $stmt =$dbh->prepare($sql);
