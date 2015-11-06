@@ -17,9 +17,9 @@ $dbh = new PDO($dsn,$user,$password);
 $dbh->query('SET NAMES UTF-8');
 $sql = 'SELECT * FROM anketo WHERE code ='.$code;
 
-$sql = 'SELECT	* FROM anketo WHERE 1';
 $stmt =$dbh->prepare($sql);
-$stmt->execute();
+$data[]=$code;
+$stmt->execute($data);
 while(1)
 {
 	$rec = $stmt ->fetch(PDO::FETCH_ASSOC);
