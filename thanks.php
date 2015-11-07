@@ -9,7 +9,6 @@
 <?php
 try
 {
-$dsn = 'mysql:dbname=phpkiso;host=localhost';
 $nickname=$_POST['nickname'];
 $email=$_POST['email'];
 $goiken=$_POST['goiken'];
@@ -17,6 +16,19 @@ $goiken=$_POST['goiken'];
 $nickname= htmlspecialchars($nickname);
 $email= htmlspecialchars($email);
 $goiken= htmlspecialchars($goiken);
+
+$dsn = 'mysql:dbname=phpkiso;host=localhost';
+$user = 'root';
+$password = '';
+$dbh = new PDO($dsn, $user, $password);
+$dbh-> query('SET NAMES utf8');
+$sql = 'INSERT INTO anketo(nickname,email,goiken) VALUES(?,?,?)';
+$stmt = $dbh -> prepare($sql);
+$data[] = $nickname;
+$data[] = $email;
+$data[] = $goiken;
+$stmt->execute($data);
+$dbh = null;
 
 print $nickname;
 print '様<br />';
@@ -27,7 +39,6 @@ print '』<br />';
 print $email;
 print 'にメールを送りましたのでご確認ください。';
 
-$dbh =null;
 }
 catch (Exception $e)
 {
@@ -35,8 +46,9 @@ catch (Exception $e)
 }
 ?>
 
+<br />
+<a href="index.html">トップに戻る</a>
 
 
 </body>
 </html>
-
